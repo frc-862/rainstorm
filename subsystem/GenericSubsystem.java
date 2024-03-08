@@ -36,6 +36,9 @@ public class GenericSubsystem extends DemoSubsystemBase {
 
         CommandScheduler.getInstance().registerSubsystem(this);
     }
+    public GenericSubsystem(double basePower, MotorController motor) {
+        this("", basePower, motor);
+    }
 
     /**
      * Create a new GenericSubsystem with a motor controller.
@@ -43,7 +46,7 @@ public class GenericSubsystem extends DemoSubsystemBase {
      * @return new RunCommand
      */
     public Command getRunCommand(DoubleSupplier power) {
-        return new StartEndCommand(() -> setPower(power.getAsDouble()), this::stop, this);
+        return startEnd(() -> setPower(power.getAsDouble()), this::stop);
     }
 
     /**
