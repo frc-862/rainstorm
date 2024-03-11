@@ -5,7 +5,6 @@ import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj2.command.StartEndCommand;
 
 /**
  * Generic demo subsystem with setPower() and stop() methods.
@@ -14,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.StartEndCommand;
  */
 
 public class GenericSubsystem extends DemoSubsystemBase {
-    
+
     protected final String name;
 
     protected MotorController motor;
@@ -26,18 +25,16 @@ public class GenericSubsystem extends DemoSubsystemBase {
      */
     public GenericSubsystem(String name, double basePower, MotorController motor) {
         super(basePower);
-        
-        if (!name.equals("") || name != null) {
+
+        if (name != null) {
             super.setName(name);
         }
 
         this.name = name;
         this.motor = motor;
-
-        CommandScheduler.getInstance().registerSubsystem(this);
     }
     public GenericSubsystem(double basePower, MotorController motor) {
-        this("", basePower, motor);
+        this(null, basePower, motor);
     }
 
     /**
@@ -45,7 +42,7 @@ public class GenericSubsystem extends DemoSubsystemBase {
      * @param power power
      * @return new RunCommand
      */
-    public Command getRunCommand(DoubleSupplier power) {
+    public Command getStartEndCommand(DoubleSupplier power) {
         return startEnd(() -> setPower(power.getAsDouble()), this::stop);
     }
 
@@ -62,5 +59,13 @@ public class GenericSubsystem extends DemoSubsystemBase {
      */
     public void stop() {
         setPower(0d);
+    }
+
+    /**
+     * Periodic for shuffleboard updates
+     */
+    @Override
+    public void periodic() {
+        super.periodic();
     }
 }

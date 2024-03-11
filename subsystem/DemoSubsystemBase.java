@@ -53,7 +53,7 @@ public class DemoSubsystemBase extends SubsystemBase {
     public void periodic() {
         /* Update Shuffleboard */
         if (this.limitEnabled) {
-            this.powerLimit = Math.min(DemoShuffleboard.createDemoLimit(getSubsystem(), 1d).getAsDouble(), 1d);
+            this.powerLimit = Math.min(DemoShuffleboard.createDemoLimit(getName(), this.powerLimit).getAsDouble(), 1d);
         }
     }
 }
