@@ -19,12 +19,14 @@ public class ArcadeDrive extends Command {
 
     /**
      * Arcade drive command
-     * @param <DT> DemoDrivetrain type
+     *
+     * @param <DT>       DemoDrivetrain type
      * @param drivetrain drivetrain
-     * @param speed speed
-     * @param rotation rotation
+     * @param speed      speed
+     * @param rotation   rotation
      */
-    public <DT extends DemoSubsystemBase & DemoDrivetrain> ArcadeDrive(DT drivetrain, DoubleSupplier speed, DoubleSupplier rotation) {
+    public <DT extends DemoSubsystemBase & DemoDrivetrain> ArcadeDrive(DT drivetrain, DoubleSupplier speed,
+            DoubleSupplier rotation) {
         this.drivetrain = drivetrain;
         this.speed = speed;
         this.rotation = rotation;
@@ -33,7 +35,8 @@ public class ArcadeDrive extends Command {
     }
 
     @Override
-    public void initialize() {}
+    public void initialize() {
+    }
 
     @Override
     public void execute() {

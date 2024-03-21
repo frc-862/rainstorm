@@ -19,12 +19,14 @@ public class TankDrive extends Command {
 
     /**
      * Tank drive command
-     * @param <DT> DemoDrivetrain type
+     *
+     * @param <DT>       DemoDrivetrain type
      * @param drivetrain drivetrain subsystem
-     * @param leftPower left power
+     * @param leftPower  left power
      * @param rightPower right power
      */
-    public <DT extends DemoSubsystemBase & DemoDrivetrain> TankDrive(DT drivetrain, DoubleSupplier leftPower, DoubleSupplier rightPower) {
+    public <DT extends DemoSubsystemBase & DemoDrivetrain> TankDrive(DT drivetrain, DoubleSupplier leftPower,
+            DoubleSupplier rightPower) {
         this.drivetrain = drivetrain;
         this.leftPower = leftPower;
         this.rightPower = rightPower;
@@ -33,7 +35,8 @@ public class TankDrive extends Command {
     }
 
     @Override
-    public void initialize() {}
+    public void initialize() {
+    }
 
     @Override
     public void execute() {

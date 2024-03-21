@@ -7,19 +7,21 @@ package frc.rainstorm.subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.rainstorm.shuffleboard.DemoShuffleboard;
 
-public class DemoSubsystemBase extends SubsystemBase {
+public class DemoSubsystemBase extends SubsystemBase implements IRainstormDemoLimits {
 
     private boolean limitEnabled;
     private double powerLimit;
 
     /**
      * Create a new RainstormSubsystemBase with a base power limit.
+     *
      * @param basePowerLimit
      */
     public DemoSubsystemBase(double basePowerLimit) {
         this.powerLimit = basePowerLimit;
         this.limitEnabled = true;
     }
+
     public DemoSubsystemBase() {
         this(1d);
         this.limitEnabled = false;
@@ -27,6 +29,7 @@ public class DemoSubsystemBase extends SubsystemBase {
 
     /**
      * Calculates the power based on limit
+     *
      * @param power input power
      * @return output power
      */
@@ -43,6 +46,7 @@ public class DemoSubsystemBase extends SubsystemBase {
 
     /**
      * Sets the power limit
+     *
      * @param demoLimit new power limit
      */
     public void setPowerLimit(double demoLimit) {
